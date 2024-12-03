@@ -7,24 +7,34 @@ function TagInput({ children, onChange }) {
   const [tagArr, setTagArr] = useState([]);
 
   const handleInputChange = (e) => {
-    setInputTagValue(e.target.value);
+    setInputTagValue(e.target.value.trim());
   };
 
-  const handleTagBtnDelete = (btnIdx) => {
-    const filterTagArr = tagArr.filter((_, idx) => idx !== btnIdx);
+  const handleOnchange = (data) => {
+    const newTagArr = data.reduce((acc, cur) => {
+      acc.push(cur.value);
+      return acc;
+    }, []);
+    onChange(newTagArr);
+  };
+
+  const handleTagBtnDelete = (key) => {
+    const filterTagArr = tagArr.filter((tag, idx) => tag.key !== key);
     setTagArr(filterTagArr);
+    handleOnchange(filterTagArr);
   };
 
   const handleKeyDown = (e) => {
-    if (e.type === "keydown" && e.keyCode === 13) {
-      setTagArr([...tagArr, e.target.value]);
+    if (e.key === "Enter" && e.target.value.length > 0) {
+      const addTagArr = [
+        ...tagArr,
+        { key: tagArr.length, value: e.target.value },
+      ];
+      setTagArr(addTagArr);
       setInputTagValue("");
+      handleOnchange(addTagArr);
     }
   };
-
-  useEffect(() => {
-    onChange(tagArr);
-  }, [onChange, tagArr]);
 
   return (
     <>
@@ -37,17 +47,17 @@ function TagInput({ children, onChange }) {
         onKeyDown={handleKeyDown}
       />
       <TagCollect>
-        {tagArr.map((tag, idx) => {
+        {tagArr.map((tag) => {
           return (
             <button
-              id={`tagButton${idx + 1}`}
-              key={`tagButton${idx + 1}`}
+              id={`tagButton${tag.key}`}
+              key={`tagButton${tag.key}`}
               className="tagButton"
-              onClick={() => handleTagBtnDelete(idx)}
+              onClick={() => handleTagBtnDelete(tag.key)}
             >
-              {`#${tag}`}
+              {`#${tag.value}`}
               <img
-                id={`tagButtonCancel${idx + 1}`}
+                id={`tagButtonCancel${tag.key}`}
                 src={ImgPath("/common/ic_X.png")}
                 alt="cancel"
               />

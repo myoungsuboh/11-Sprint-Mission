@@ -14,10 +14,10 @@ function TextInput({
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e) => {
-    let targetValue = e.target.value;
+    const targetValue = e.target.value;
     if (type === "number") {
       if (targetValue.length < 1) return;
-      let value = Number(targetValue.replaceAll(",", ""));
+      const value = Number(targetValue.replaceAll(",", ""));
       if (!isNaN(value)) {
         const formatValue = value.toLocaleString("ko-KR");
         setInputValue(formatValue);

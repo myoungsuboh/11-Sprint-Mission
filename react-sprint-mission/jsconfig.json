@@ -5,7 +5,8 @@
       "assets/*": ["assets/*"],
       "utile/*": ["utile/*"],
       "components/*": ["components/*"],
-      "pages/*": ["pages/*"]
+      "pages/*": ["pages/*"],
+      "service/*": ["service/*"]
     }
   },
   "include": ["src"]

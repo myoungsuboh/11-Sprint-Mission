@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./AddItem.css";
 import { TextInput, ItemImage, TagInput, Textarea } from "components/index";
 import { postAxios } from "utils/api";
+import IdolChartTab from "components/IdolChartTab";
 
 function AddItem(props) {
   const [itemName, setItemName] = useState("");
@@ -41,6 +42,7 @@ function AddItem(props) {
 
   return (
     <main>
+      <IdolChartTab />
       <ItemHeader />
       <section className="section">
         <div className="contentsTopTitle">

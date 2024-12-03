@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
 
 function Signin(props) {
-  return <div></div>;
+  return <div></div>
 }
 
-Signin.propTypes = {};
+Signin.propTypes = {}
 
-export default Signin;
+export default Signin

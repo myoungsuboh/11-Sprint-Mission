@@ -66,21 +66,4 @@
   height: 32px;
   margin-right: 5px;
 }
-.goBackItemsButton {
-  display: flex;
-  flex-direction: row;
-  padding: 4px 12px;
-  margin: 0 auto;
-  width: 240px;
-  height: 48px;
-  background: var(--skyblue);
-  border: 1px solid #e5e7eb;
-  border-radius: 35px;
-  justify-content: center;
-  align-items: center;
 
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 29px;
-  color: var(--white);
-}
